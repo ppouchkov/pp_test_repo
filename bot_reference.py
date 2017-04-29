@@ -6,6 +6,8 @@ import requests
 from tornado import web
 from tornado.ioloop import IOLoop
 
+TOKEN = '332923901:AAFZ2HhajHBTsH2a5w2lvadAIQfX2fWRB1A'
+
 
 def convert_url_to_tinyurl(url):
     return requests.get('http://tinyurl.com/api-create.php?url={}'.format(url)).text
