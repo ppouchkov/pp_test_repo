@@ -4,7 +4,7 @@ from tornado.web import RequestHandler
 
 class MainHandler(RequestHandler):
     def get(self):
-        self.write("Hello from Tornado")
+        self.write("Hello from Tornado {}".format(self.__class__.__name__))
 
 
 class BotHandler(RequestHandler):
@@ -12,8 +12,7 @@ class BotHandler(RequestHandler):
         self.bot = bot
 
     def get(self):
-        self.write("What are you doing here?")
-        self.finish()
+        self.write("Hello from Tornado {}".format(self.__class__.__name__))
 
     def post(self):
         if ("Content-Length" in self.request.headers
@@ -28,4 +27,3 @@ class BotHandler(RequestHandler):
             self.finish()
         else:
             self.write("What are you doing here?")
-            self.finish()
