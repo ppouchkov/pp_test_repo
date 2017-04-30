@@ -1,10 +1,19 @@
+import datetime
+
 import telebot
 from tornado.web import RequestHandler
+
+GREETING_MSG = "Hello from Tornado"
+
+
+def update_greeting_message():
+    global GREETING_MSG
+    GREETING_MSG = "Hello from Tornado {}".format(datetime.datetime.now())
 
 
 class MainHandler(RequestHandler):
     def get(self):
-        self.write("Hello from Tornado {}".format(self.__class__.__name__))
+        self.write(GREETING_MSG)
 
 
 class BotHandler(RequestHandler):
